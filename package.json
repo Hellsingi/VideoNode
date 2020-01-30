@@ -1,0 +1,22 @@
+{
+  "name": "videonode",
+  "version": "1.0.0",
+  "description": "Nodejs tutorial ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Hellsingi/VideoNode.git"
+  },
+  "author": "Ilya Dzemchanka",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Hellsingi/VideoNode/issues"
+  },
+  "homepage": "https://github.com/Hellsingi/VideoNode#readme",
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  }
+}

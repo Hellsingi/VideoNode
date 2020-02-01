@@ -1,8 +1,14 @@
 {
-  "name": "videonode",
+  "name": "VideoNode",
   "version": "1.0.0",
-  "description": "Nodejs tutorial ",
+  "description": "",
   "main": "index.js",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.2"
+  },
   "scripts": {
     "start": "node index.js",
     "dev": "nodemon index.js"
@@ -11,13 +17,11 @@
     "type": "git",
     "url": "git+https://github.com/Hellsingi/VideoNode.git"
   },
-  "author": "Ilya Dzemchanka",
+  "keywords": [],
+  "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Hellsingi/VideoNode/issues"
   },
-  "homepage": "https://github.com/Hellsingi/VideoNode#readme",
-  "devDependencies": {
-    "nodemon": "^2.0.2"
-  }
+  "homepage": "https://github.com/Hellsingi/VideoNode#readme"
 }

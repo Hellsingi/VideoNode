@@ -7,6 +7,8 @@ const cardRoutes = require('./routes/card')
 const addRoutes = require('./routes/add')
 const coursesRoutes = require('./routes/courses')
 
+const url = require('./url');
+
 const app = express()
 
 const hbs = exphbs.create({
@@ -16,7 +18,7 @@ const hbs = exphbs.create({
 
 app.engine('hbs', hbs.engine)
 app.set('view engine', 'hbs')
-app.set('views', 'views')
+app.set('views', 'pages')
 
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({extended: true}))
@@ -30,7 +32,6 @@ const PORT = process.env.PORT || 3000
 
 async function start() {
   try {
-    const url = 'mongodb://Hellsing:IS7MKvRHj194aQiI@first-shard-00-00-2tzr5.gcp.mongodb.net:27017,first-shard-00-01-2tzr5.gcp.mongodb.net:27017,first-shard-00-02-2tzr5.gcp.mongodb.net:27017/test?ssl=true&replicaSet=First-shard-0&authSource=admin&retryWrites=true&w=majority'
     await mongoose.connect(url, {
         useNewUrlParser: true,
         useUnifiedTopology: true

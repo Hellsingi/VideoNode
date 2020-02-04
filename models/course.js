@@ -1,15 +1,15 @@
-// const { Shema, model } = require('mongoose');
+const { Schema, model } = require('mongoose')
 
-// const course = new Shema({
-//     title: {
-//         type: String,
-//         require: true
-//     }, 
-//     price: {
-//         type: Number,
-//         require: true
-//     },
-//     img: String
-// });
+const course = new Schema({
+    title: {
+        type: String,
+        required: true
+    },
+    price: {
+        type: Number,
+        required: true
+    },
+    img: String
+})
 
-// module.exports = model('Course', course);
+module.exports = model('Course', course)

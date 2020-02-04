@@ -8,12 +8,19 @@ router.get('/', (req, res) => {
         isAdd: true
     });
 });
-router.post('/',async (req, res) => {
-    const course = new Course(req.body.title, req.body.price, req.body.image);
+router.post('/', async (req, res) => {
+    const course = new Course({
+        title: req.body.title,
+        price: req.body.price,
+        img: req.body.img
+    });
 
-    await course.save();
-    
-    res.redirect('/courses');
+    try {
+        await course.save();
+        res.redirect('/courses');
+    } catch (e) {
+        console.error(e);
+    }
 })
 
 module.exports = router;

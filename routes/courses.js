@@ -5,7 +5,7 @@ const router = Router();
 router.get('/', async (req, res) => {
     const courses = await Course.find()
     res.render('courses', {
-      title: 'Курсы',
+      title: 'Courses',
       isCourses: true,
       courses
     })

@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose')
+const { Schema, model } = require('mongoose');
 
 const userSchema = new Schema({
     email: {
@@ -44,9 +44,9 @@ userSchema.methods.addToCart = function (course) {
         })
     }
 
-    this.cart = { items }
-    return this.save()
-}
+    this.cart = { items };
+    return this.save();
+};
 
 
 userSchema.methods.removeFromCart = function (id) {
@@ -68,4 +68,4 @@ userSchema.methods.clearCart = function () {
     return this.save()
 }
 
-module.exports = model('User', userSchema)
+module.exports = model('User', userSchema);

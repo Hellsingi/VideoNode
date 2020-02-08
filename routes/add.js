@@ -1,13 +1,13 @@
 const { Router } = require('express');
 const Course = require('../models/course');
-const router = Router();
 const auth = require('../middleware/auth');
+const router = Router();
 
 router.get('/', auth, (req, res) => {
     res.render('add', {
         title: 'Добавить курс',
         isAdd: true
-    });
+    })
 });
 
 router.post('/', auth, async (req, res) => {
@@ -24,6 +24,6 @@ router.post('/', auth, async (req, res) => {
     } catch (e) {
         console.log(e)
     }
-})
+});
 
-module.exports = router
+module.exports = router;

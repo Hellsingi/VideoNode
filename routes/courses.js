@@ -1,8 +1,7 @@
 const { Router } = require('express');
 const Course = require('../models/course');
-const router = Router();
 const auth = require('../middleware/auth');
-
+const router = Router();
 
 router.get('/', async (req, res) => {
     const courses = await Course.find()
@@ -51,7 +50,7 @@ router.get('/:id', async (req, res) => {
         layout: 'empty',
         title: `Курс ${course.title}`,
         course
-    })
-})
+    });
+});
 
-module.exports = router
+module.exports = router;

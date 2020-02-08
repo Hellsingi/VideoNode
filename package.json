@@ -13,17 +13,16 @@
   "dependencies": {
     "express": "^4.16.4",
     "express-handlebars": "^3.0.2",
+    "express-session": "^1.17.0",
     "mongoose": "^5.5.3",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
     "nodemon": "^2.0.2"
-
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Hellsingi/VideoNode.git"
   },
   "homepage": "https://github.com/Hellsingi/VideoNode#readme"
-  
 }

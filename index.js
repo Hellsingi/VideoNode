@@ -12,6 +12,7 @@ const coursesRoutes = require('./routes/courses');
 const authRoutes = require('./routes/auth');
 const User = require('./models/user');
 const varMiddleware = require('./middleware/variables');
+const userMiddleware = require('./middleware/user');
 
 const MONGODB_URI = 'mongodb://Hellsingi:bcgfybz@cluster0-shard-00-00-8rsx0.mongodb.net:27017,cluster0-shard-00-01-8rsx0.mongodb.net:27017,cluster0-shard-00-02-8rsx0.mongodb.net:27017/shop?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority';
 
@@ -38,6 +39,7 @@ app.use(session({
     store
 }));
 app.use(varMiddleware);
+app.use(userMiddleware);
 
 app.use('/', homeRoutes);
 app.use('/add', addRoutes);

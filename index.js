@@ -1,5 +1,6 @@
 const express = require('express')
 const path = require('path')
+const csrf = require('csurf')
 const mongoose = require('mongoose')
 const exphbs = require('express-handlebars')
 const session = require('express-session')
@@ -15,6 +16,7 @@ const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
 
 const MONGODB_URI = 'mongodb://Hellsingi:bcgfybz@cluster0-shard-00-00-8rsx0.mongodb.net:27017,cluster0-shard-00-01-8rsx0.mongodb.net:27017,cluster0-shard-00-02-8rsx0.mongodb.net:27017/shop?ssl=true&replicaSet=Cluster0-shard-0&authSource=admin&retryWrites=true&w=majority';
+
 const app = express()
 const hbs = exphbs.create({
   defaultLayout: 'main',
@@ -37,6 +39,7 @@ app.use(session({
   saveUninitialized: false,
   store
 }))
+app.use(csrf())
 app.use(varMiddleware)
 app.use(userMiddleware)
 
@@ -47,7 +50,7 @@ app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
 
-const PORT = process.env.PORT || 3000
+const PORT = process.env.PORT || 3030
 
 async function start() {
   try {

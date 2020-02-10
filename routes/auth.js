@@ -87,6 +87,33 @@ router.get('/reset', (req, res) => {
     });
 });
 
+router.get('/password/:token', async (req, res) => {
+    if (!req.params.token) {
+        return res.redirect('/auth/login');
+    }
+
+    try {
+        const user = await User.findOne({
+            resetToken: req.params.token,
+            resetTokenExp: { $gt: Date.now() }
+        });
+
+        if (!user) {
+            return res.redirect('/auth/login');
+        } else {
+            res.render('auth/password', {
+                title: 'New passwort',
+                error: req.flash('error'),
+                userId: user._id.toString(),
+                token: req.params.token
+            });
+        }
+    } catch (e) {
+        console.error(e);
+    }
+
+});
+
 router.post('/reset', (req, res) => {
     try {
         crypto.randomBytes(32, async (err, buffer) => {
@@ -109,6 +136,29 @@ router.post('/reset', (req, res) => {
                 res.redirect('/auth/reset');
             }
         })
+    } catch (e) {
+        console.error(e);
+    }
+});
+
+router.post('/password', async (req, res) => {
+    try {
+        const user = await User.findOne({
+            _id: req.body.userId,
+            resetToken: req.body.token,
+            resetTokenExp: { $gt: Date.now() }
+        })
+
+        if (user) {
+            user.password = await bcrypt.hash(req.body.password, 10);
+            user.resetToken = undefined;
+            user.resetTokenExp = undefined;
+            await user.save();
+            res.redirect('/autn/login');
+        } else {
+            req.flash('loginError', 'Time life token is gone');
+            res.redirect('/auth/login');
+        }
     } catch (e) {
         console.error(e);
     }
